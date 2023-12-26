@@ -47,8 +47,9 @@ $ sudo fastboot reboot
 電源ボタンと音量＋ボタンを押すとtwrp に入ることが出来る。
 
 ### ハマりポイント
-インストール時に使っていたOSはubuntu 18.04だが、そのOSで、sudo fastboot flash boot twrp_3.2.1-castor_windy.imgとrawを付け忘れてはいけない。
-sudo fastboot flash boot としているサイトがあって、ubuntuのバージョンによるのかわからないが、FAILED (remote: dtb not found) fastbootというエラーが出たり、bootを当てられるのに起動しなかったり、原因が不明すぎて大変だった。
+インストール時に使っていたOSはubuntu 18.04だが、そのOSで、sudo fastboot flash boot twrp_3.2.1-castor_windy.imgではだめで、flashの部分はflash:rawとしたほうがいい。( fastbootのバージョンで変わるかもだが）
+
+sudo fastboot flash boot としているサイトがあって、fastboot, ubuntuのバージョンによるのかわからないが、FAILED (remote: dtb not found) fastbootというエラーが出たり、bootを当てられるのに起動しなかったり、原因が不明すぎて大変だった。
 
 
 # その他ハマった所や注意事項
