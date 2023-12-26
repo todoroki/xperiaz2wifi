@@ -23,12 +23,13 @@ https://opengapps.org/
 ### ブートローダのアンロック
 SONYの公式サイトで、阿吽ロックコードを取得
 https://developer.sony.com/open-source/aosp-on-xperia-open-devices/get-started/unlock-bootloader#warranty
-一番下のところから、自分のデバイスを選択
+一番下のところから、自分のデバイスを選択。Z2 wifiの場合はIDIDを使う。（MEIDはないみたい）
+あとはfastbootでアンロックする。
 
 $ sudo apt install adb fastboot
 $ adb devices # devicesの確認 udev関連の設定を忘れずに
 $ adb reboot bootloader
-で、ブートローダーモードに入り、画面が黒に。。青ランプが光れば成功。
+で、ブートローダーモードに入り、画面が黒になって、青ランプが光れば成功。
 
 $ fastboot devices # deviceがリストアップされているか確認
 $ fastboot oem unlock 0xアンロックコード
