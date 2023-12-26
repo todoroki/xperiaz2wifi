@@ -15,8 +15,29 @@ https://get.carbonrom.org/device-castor_windy.html
 今回はCARBON-CR-6.1-NOCT-RELEASE-castor_windy-20200524-2252.zipを利用した。
 
 Android OSは少し古くて8.1となる。
+googleのライブラリがほしい時は次から取ってくると良い。ARM64でなく、ARMを選ぶこと。OSをは８．１となる。わたしはpicoを選択した。
+https://opengapps.org/
 
 ## インストール方法
+
+### ブートローダのアンロック
+SONYの公式サイトで、阿吽ロックコードを取得
+https://developer.sony.com/open-source/aosp-on-xperia-open-devices/get-started/unlock-bootloader#warranty
+一番下のところから、自分のデバイスを選択
+
+$ sudo apt install adb fastboot
+$ adb devices # devicesの確認 udev関連の設定を忘れずに
+$ adb reboot bootloader
+で、ブートローダーモードに入り、画面が黒に。。青ランプが光れば成功。
+
+$ fastboot devices # deviceがリストアップされているか確認
+$ fastboot oem unlock 0xアンロックコード
+
+参考:
+https://appledms.blog.jp/archives/17298552.html
+
+
+### bootの書き込み
 
 $ sudo fastboot flash:raw boot twrp_3.2.1-castor_windy.img
 $ sudo fastboot reboot
