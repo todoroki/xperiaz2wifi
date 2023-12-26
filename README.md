@@ -25,23 +25,25 @@ SONYの公式サイトで、阿吽ロックコードを取得
 https://developer.sony.com/open-source/aosp-on-xperia-open-devices/get-started/unlock-bootloader#warranty
 一番下のところから、自分のデバイスを選択。Z2 wifiの場合はIDIDを使う。（MEIDはないみたい）
 あとはfastbootでアンロックする。
-
+``` bash
 $ sudo apt install adb fastboot
 $ adb devices # devicesの確認 udev関連の設定を忘れずに
 $ adb reboot bootloader
+``` 
 で、ブートローダーモードに入り、画面が黒になって、青ランプが光れば成功。
-
+``` bash
 $ fastboot devices # deviceがリストアップされているか確認
 $ fastboot oem unlock 0xアンロックコード
-
+``` 
 参考:
 https://appledms.blog.jp/archives/17298552.html
 
 
 ### bootの書き込み
-
+``` bash
 $ sudo fastboot flash:raw boot twrp_3.2.1-castor_windy.img
 $ sudo fastboot reboot
+``` 
 電源ボタンと音量＋ボタンを押すとtwrp に入ることが出来る。
 
 ### ハマりポイント
