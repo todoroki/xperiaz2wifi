@@ -1,6 +1,7 @@
 # はじめに
 Xperia z2 tabletを中古で買ったが、Android 5 までしか対応していなかったために、カスタムロムをいれた。
 色々会って手こずったが、インストールする方法までを防備録として記す。
+今回はAndroid8をインストールした。現時点でAndroid11相当をインストールしている人がいたが、一筋縄にはいかなかったので、勘弁なAndoroid8でインストール例を示す。
 
 # 必要なもの
 
@@ -21,7 +22,7 @@ https://opengapps.org/
 ## インストール方法
 
 ### ブートローダのアンロック
-SONYの公式サイトで、阿吽ロックコードを取得
+SONYの公式サイトで、アカウントのロックコードを取得
 https://developer.sony.com/open-source/aosp-on-xperia-open-devices/get-started/unlock-bootloader#warranty
 一番下のところから、自分のデバイスを選択。Z2 wifiの場合はIDIDを使う。（MEIDはないみたい）
 あとはfastbootでアンロックする。
@@ -47,14 +48,14 @@ $ sudo fastboot reboot
 電源ボタンと音量＋ボタンを押すとtwrp に入ることが出来る。
 
 ### ハマりポイント
-インストール時に使っていたOSはubuntu 18.04だが、そのOSで、sudo fastboot flash boot twrp_3.2.1-castor_windy.imgではだめで、flashの部分はflash:rawとしたほうがいい。( fastbootのバージョンで変わるかもだが）
+インストール時に使っていたOSはubuntu 18.04だが、そのOSで、`sudo fastboot flash boot twrp_3.2.1-castor_windy.img`ではだめで、flashの部分をflash:rawとしたほうがいい。( fastbootのバージョンで変わるかもだが）
 
-sudo fastboot flash boot としているサイトがあって、fastboot, ubuntuのバージョンによるのかわからないが、FAILED (remote: dtb not found) fastbootというエラーが出たり、bootを当てられるのに起動しなかったり、原因が不明すぎて大変だった。
+`sudo fastboot flash boot` としているサイトがあって、fastboot, ubuntuのバージョンによるのかわからないが、FAILED (remote: dtb not found) fastbootというエラーが出たり、bootを当てられるのに起動しなかったり、原因が不明すぎて大変だった。
 
 
 # その他ハマった所や注意事項
 ## LineageOS
-調べていくと解るが、現時点でLineageOS というものが出ていて、v18ではAndroid11相当でsony xperai z2 tabletに対応しているというのが海外のブログで散見する。いろいろ試したが、なんともならなかった。事象として全くブートしないなどの問題が発生する。
+調べていくと解るが、現時点でLineageOS というものが出ていて、v18ではAndroid11相当でsony xperai z2 tabletに対応しているというのが海外のブログで散見する。いろいろ試したが、なんともならなかった。事象として全くブートしないなどの問題が発生する。海外サイトのブロクを読み漁ったり、試行錯誤したが、結局Bootすらせずなにか特別なことをしないとだめなのかもしれない。ただ、実際に日本人の人でインストールに成功してメルカリで販売している人がいたら、きっと何かをするとできるのだろうが、その体力はもう残っていなかった。
 ## TWRP
 本gitのバージョンじゃないとtwrpが起動しなかった。これ以外のバージョンではSony xperiaのロゴは全く出てこなくて、一番最初は文鎮化したと思ってかなり焦った。
 ## xperia のバージョン
