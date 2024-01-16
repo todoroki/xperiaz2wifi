@@ -17,6 +17,7 @@ https://get.carbonrom.org/device-castor_windy.html
 
 Android OSは少し古くて8.1となる。
 googleのライブラリがほしい時は次から取ってくると良い。ARM64でなく、ARMを選ぶこと。OSをは８．１となる。わたしはpicoを選択した。
+６４ビット版じゃなくて３２ビット版じゃないとエラーになる。
 https://opengapps.org/
 
 ## インストール方法
@@ -47,6 +48,15 @@ $ sudo fastboot reboot
 ``` 
 電源ボタンと音量＋ボタンを押すとtwrp に入ることが出来る。
 
+### TWRPの起動
+SDカードに先程のCARBON-CR-6.1-NOCT-RELEASE-castor_windy-20200524-2252.zipをいれておき、Googleライブラリも置いておき、Xperia z2にセットする。
+rebootするとTWRPが起動する。そうしたら、あとはやるだけ。
+まずはSDカードを除くSYSTEM, DATA, DALVIK, CACHEの領域をフォーマットする。これにより、Xperiaのオリジナルが占めている領域が消される。
+あとは、インストール項目のところに行き、Carbon osと google のライブラリをインストールして再起動すればOSが起動する。
+
+TWRP上でなんとなくでやっていけばできる。出来なかったり失敗しても、ここまで動けば（TWRPが動けば)
+あとはどうにでもなるので失敗を恐れずやる。
+
 ### ハマりポイント
 インストール時に使っていたOSはubuntu 18.04だが、そのOSで、`sudo fastboot flash boot twrp_3.2.1-castor_windy.img`ではだめで、flashの部分をflash:rawとしたほうがいい。( fastbootのバージョンで変わるかもだが）
 
@@ -60,3 +70,5 @@ $ sudo fastboot reboot
 本gitのバージョンじゃないとtwrpが起動しなかった。これ以外のバージョンではSony xperiaのロゴは全く出てこなくて、一番最初は文鎮化したと思ってかなり焦った。
 ## xperia のバージョン
 Xperiaのコードネームは、z, z2, z2 wifi, z2 LGE, z3 ... などで名前が別れており、たしか xperia z はyugaだったと思うが、もちろん機種ごとに色々と癖が異なるようだ。z2 wifiは、castor_windyといわれる。それをしらずに、yugaのカスタムロムで頑張ったりしていてよくわからない自称にぶち当たった。
+## 充電
+fastboot中は充電が出来ないっぽいので、やるときはフル充電してから望むこと。
